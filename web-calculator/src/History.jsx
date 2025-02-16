@@ -20,7 +20,7 @@ function History({ lastEquation }) {
                         <Typography variant="h4">History</Typography>
                         <ul>
                             {history.map((item, index) => (
-                                <li key={index}>{item}</li>
+                                <li style={{ paddingBottom: '10px', paddingTop: '10px' }} key={index}>{item}</li>
                             ))}
                         </ul>
                     </CardContent>
