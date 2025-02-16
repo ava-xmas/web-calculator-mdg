@@ -38,15 +38,15 @@ function Numbers({ handleNumber, handleOper, clearDisplay, handleBackspace, calc
                     </ButtonGroup>
                     <ButtonGroup>
                         <Stack direction={'row'} spacing={3}>
-                            <Button size="large" variant="text">0</Button>
-                            <Button size="large" variant="text">.</Button>
+                            <Button size="large" variant="text" onClick={() => handleNumber(0)}>0</Button>
+                            <Button size="large" variant="text" onClick={() => { }}>.</Button>
                             <Button size="large" variant="text" onClick={() => calculateResult()}>=</Button>
                             <Button size="large" variant="text" onClick={() => handleOper('/')}>/</Button>
                         </Stack>
                     </ButtonGroup>
                 </Stack>
-            </ButtonGroup>
-        </div>
+            </ButtonGroup >
+        </div >
     );
 }
 

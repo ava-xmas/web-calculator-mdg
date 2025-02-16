@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
-import { Grid2 } from '@mui/material'
 import Button from '@mui/material/Button'
 import Heading from './Heading'
 import Numbers from './Numbers'
 import Display from './Display'
+import History from './History'
 import './App.css'
 
 let wasLastClickEquals = false;
+let lastEquation = "";
+
 function App() {
   const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
   const [display, setDisplay] = useState("0");
@@ -69,11 +71,16 @@ function App() {
         return;
       }
 
+      // on editing lastEquation, the change is also sent to the History component
+      // from there, it adds the new equation to its list
+      lastEquation = display.toString() + " = " + Number(result.toFixed(8)).toString();
+
       setDisplay(Number(result.toFixed(8)).toString());
     } catch (error) {
       setDisplay("Error");
     }
   };
+
 
   return (
     <>
@@ -88,7 +95,9 @@ function App() {
             calculateResult={calculateResult}>
           </Numbers>
         </div>
-        <div className="history"></div>
+        <div className="history">
+          <History lastEquation={lastEquation}></History>
+        </div>
       </div>
     </>
   )
