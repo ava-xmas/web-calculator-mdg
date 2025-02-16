@@ -2,15 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { Box, Card, CardContent, Typography } from '@mui/material';
 
 function History({ lastEquation }) {
-    // State to store all the accumulated history
+    // state to store all the accumulated history
     const [history, setHistory] = useState([]);
 
-    // This effect will run every time `lastEquation` changes
+    // this effect will run every time `lastEquation` changes
     useEffect(() => {
         if (lastEquation) {
-            setHistory((prevHistory) => [...prevHistory, lastEquation]); // Append the new value to the array
+            setHistory((prevHistory) => [...prevHistory, lastEquation]);
         }
-    }, [lastEquation]); // Dependency on `lastEquation`, so it runs every time it changes
+    }, [lastEquation]);
 
     return (
         <div>
