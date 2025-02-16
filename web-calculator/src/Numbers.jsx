@@ -1,6 +1,6 @@
 import { Button, ButtonGroup, Stack } from '@mui/material';
 
-function Numbers({ handleNumber, handleOper, clearDisplay, handleBackspace, calculateResult }) {
+function Numbers({ handleNumber, handleDecimal, handleOper, clearDisplay, handleBackspace, calculateResult }) {
     return (
         <div className="button-group">
 
@@ -39,7 +39,7 @@ function Numbers({ handleNumber, handleOper, clearDisplay, handleBackspace, calc
                     <ButtonGroup>
                         <Stack direction={'row'} spacing={3}>
                             <Button size="large" variant="text" onClick={() => handleNumber(0)}>0</Button>
-                            <Button size="large" variant="text" onClick={() => { }}>.</Button>
+                            <Button size="large" variant="text" onClick={() => handleDecimal()}>.</Button>
                             <Button size="large" variant="text" onClick={() => calculateResult()}>=</Button>
                             <Button size="large" variant="text" onClick={() => handleOper('/')}>/</Button>
                         </Stack>

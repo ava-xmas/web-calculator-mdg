@@ -7,6 +7,7 @@ import History from './History'
 import './App.css'
 
 let wasLastClickEquals = false;
+let operPressed = false;
 let lastEquation = "";
 
 function App() {
@@ -17,10 +18,10 @@ function App() {
     if (wasLastClickEquals) {
       // if last click was equals
       wasLastClickEquals = false; // now the last click is a number, not equals
-      clearDisplay();
+      setDisplay("");
       handleNumber(num);
     } else {
-      if (display == 0) {
+      if (display === "0") {
         setDisplay((prevDisplay) => {
           return num.toString();
         })
@@ -32,8 +33,15 @@ function App() {
     }
   }
 
+  const handleDecimal = () => {
+    setDisplay((prevDisplay) => {
+      return prevDisplay + ".";
+    })
+  }
 
   const handleOperator = (oper) => {
+    operPressed = true;
+    wasLastClickEquals = false;
     if (['+', '-', '*', '/'].includes(display[display.length - 1])) {
       return;
     } else {
@@ -61,23 +69,26 @@ function App() {
 
   const calculateResult = () => {
     wasLastClickEquals = true;
-    try {
-      const expression = display.replace(/x/g, '*');
-      const result = new Function('return ' + expression)();
+    if (operPressed) {
+      try {
+        const expression = display.replace(/x/g, '*');
+        const result = new Function('return ' + expression)();
 
-      // division by zero
-      if (!isFinite(result)) {
+        // division by zero
+        if (!isFinite(result)) {
+          setDisplay("Error");
+          return;
+        }
+
+        // on editing lastEquation, the change is also sent to the History component
+        // from there, it adds the new equation to its list
+        lastEquation = display.toString() + " = " + Number(result.toFixed(8)).toString();
+
+        setDisplay(Number(result.toFixed(8)).toString());
+      } catch (error) {
         setDisplay("Error");
-        return;
       }
-
-      // on editing lastEquation, the change is also sent to the History component
-      // from there, it adds the new equation to its list
-      lastEquation = display.toString() + " = " + Number(result.toFixed(8)).toString();
-
-      setDisplay(Number(result.toFixed(8)).toString());
-    } catch (error) {
-      setDisplay("Error");
+      operPressed = false;
     }
   };
 
@@ -89,6 +100,7 @@ function App() {
           <Heading></Heading>
           <Display value={display}></Display>
           <Numbers handleNumber={handleNumber}
+            handleDecimal={handleDecimal}
             handleOper={handleOperator}
             clearDisplay={clearDisplay}
             handleBackspace={handleBackspace}
