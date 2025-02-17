@@ -13,20 +13,22 @@ function History({ lastEquation }) {
     }, [lastEquation]);
 
     return (
-        <div>
-            <Box width={300}>
-                <Card sx={{ backgroundColor: 'transparent', color: 'white' }}>
-                    <CardContent>
-                        <Typography variant="h4">History</Typography>
+        <Box>
+            <Card sx={{ backgroundColor: 'transparent', color: 'white' }}>
+                <CardContent>
+
+                    <Typography className='history-heading' variant="h4">History</Typography>
+                    <div className="history-body">
                         <ul>
                             {history.map((item, index) => (
-                                <li style={{ paddingBottom: '10px', paddingTop: '10px' }} key={index}>{item}</li>
+                                <li className='history-box' style={{ paddingBottom: '10px', paddingTop: '10px', listStyleType: 'none', }} key={index}>{item}</li>
                             ))}
                         </ul>
-                    </CardContent>
-                </Card>
-            </Box>
-        </div>
+                    </div>
+                </CardContent>
+            </Card>
+        </Box>
+
     );
 }
 

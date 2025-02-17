@@ -1,27 +1,74 @@
+body {
+  background-color: #000000;
+  background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23aeaab4' fill-opacity='0.4'%3E%3Cpath d='M50 50c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10s-10-4.477-10-10 4.477-10 10-10zM10 10c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10S0 25.523 0 20s4.477-10 10-10zm10 8c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm40 40c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  color: white;
+}
+
 #root {
-  max-width: 1280px;
+  /* max-width: 1280px; */
+  background-color: #000000;
+  width: 1000px;
+  border-radius: 20px;
+  /* box-shadow: 3px 3px 1px grey; */
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+  box-sizing: border-box;
 }
-
 
 .main {
   display: flex;
   flex-direction: row;
-  padding: 10%;
+  align-items: baseline;
+  justify-content: space-evenly;
+}
+
+.heading {
+  padding: 20px 0;
+  padding-bottom: 20px;
 }
 
 .calc {
+  border: 1px solid grey;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px grey;
   padding: 20px;
+  height: 350px;
+}
+
+.history-heading {
+  position: sticky;
+  padding: 10px 0;
+}
+
+.history-body {
+  padding: 10px 20px;
+  padding-right: 40px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.history-box {
+  background-color: #111;
+  border-radius: 10px;
+  margin: 5px 0;
+  width: 200px;
 }
 
 .history {
-  padding: 50px;
+  padding: 20px 10px;
+  height: 400px;
 }
 
 @media (max-width: 800px) {
-  .main {
+  #root {
     flex-direction: column;
   }
 

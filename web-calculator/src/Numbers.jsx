@@ -8,8 +8,8 @@ function Numbers({ handleNumber, handleDecimal, handleOper, clearDisplay, handle
                 <Stack direction={'column'} spacing={2}>
                     <ButtonGroup>
                         <Stack direction={'row'} spacing={5}>
-                            <Button size="large" variant="text" onClick={() => { clearDisplay() }}>Clear</Button>
                             <Button size="large" variant="text" onClick={() => { handleBackspace() }}>Backspace</Button>
+                            <Button size="large" variant="text" onClick={() => { clearDisplay() }}>Clear</Button>
                         </Stack>
                     </ButtonGroup>
                     <ButtonGroup>

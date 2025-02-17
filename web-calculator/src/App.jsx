@@ -95,9 +95,11 @@ function App() {
 
   return (
     <>
+
+      <Heading></Heading>
       <div className="main">
         <div className="calc">
-          <Heading></Heading>
+
           <Display value={display}></Display>
           <Numbers handleNumber={handleNumber}
             handleDecimal={handleDecimal}
@@ -111,6 +113,8 @@ function App() {
           <History lastEquation={lastEquation}></History>
         </div>
       </div>
+
+
     </>
   )
 }
